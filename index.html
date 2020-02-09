@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>TASK</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=1170, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#fafafa">
+
+</head>
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <div><h1 id="ContentTitle">Market edit</h1></div>
+
+  <div id="MainTable">
+      <table class="topTable" >
+        <tr>
+          <td class="fields" width="30%"><input id="searchField" maxlength="15" size="25" placeholder="Фильтр по названию"></td>
+          <td class="left" ><input class="buttons" value="Search" onclick="searchProduct($('#searchField').val());" type="button"></td>
+          <td class="right"><input class="buttons" value="Add new"  onclick="clearBottonFields();"  type="button"></td>
+        </tr>
+      </table>
+
+  <table class="cwdtable" cellspacing="0" cellpadding="1" border="1">
+    <thead>
+    <tr>
+      <th>Name (required field) <img id="sortByName" src="img/triangletop.png" width="18" height="18" align="right" onclick="sortTable('sortByName');"></th>
+      <th>Count <img id="sortByCount" src="img/triangletop.png" width="18" height="18" align="right" onclick="sortTable('sortByCount');" ></th>
+      <th>Price <img id="sortByPrice" src="img/triangletop.png" width="18" height="18" align="right" onclick="sortTable('sortByPrice');" ></th>
+      <th>Actions </th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+    <p></p>
+    <table class="bottonTable" >
+      <tr>
+      <td class="left">Name:</td>
+        <td class="left">Count:</td>
+      <td class="left">Price:</td>
+
+    </tr>
+      <tr>
+        <td class="fields "  width="10%"><input type="text" id="productNameField" maxlength="19" size="25" placeholder="Product Name"></td>
+        <td class="fields" width="10%"><input type="text" id="countField" maxlength="10" size="7" placeholder="5"></td>
+        <td class="fields" width="10%"><input type="text" name="currency-field" id="priceField" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" placeholder="$0,000.00" size="15" width="100%"></td>
+        <td class="left"><input class="buttons" id="add" value="Add" onclick="insertData(document.getElementById('productNameField').value, document.getElementById('countField').value,
+        document.getElementById('priceField').value)" type="button"></td>
+      </tr>
+      <tr>
+        <td class="left" id="errLabel" colspan="3"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="Modal" class="prefix-Dialog">
+    <div>
+      <h4>You are sure?</h4>
+      <div class="prefix-tabs">
+
+        <table  width="100%" >
+          <p></p>
+
+          <tr> <td class="left"><input  class="confirm" value=" Yes " onclick="delRowOfTable()" type="button"></td>
+            <td ><input align="right" class="confirm" value=" No " onclick="openModal();" type="button"></td>
+          </tr>
+
+        </table>
+
+      </div>
+      <a class="prefix-close" title="Закрыть" href="#close"></a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/test.js"></script>
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="js/vendor/jquery-3.4.1.min.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+    $(document).ready(function() // Запрещаем копировать из буфера обмена в наш count филд
+    {
+        $('#countField').on("cut copy paste",function(e) {
+            e.preventDefault();
+        });
+    });
+
+    $("input[type='text']").on({
+        click: function() {
+            setSelectField($(this));
+        }
+    });
+
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="js/modalWindows.js" > </script>
+</body>
+</html>
