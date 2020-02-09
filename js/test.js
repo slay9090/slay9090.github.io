@@ -1,5 +1,5 @@
 let section = {
-  name: ["product1","ProDuct2","product3","product4","product5","product4","tprotduct7"],
+  name: ["product1","Product0","product3","product4","product5","product4","tprotduct7"],
   count: [5,5,5,5,5,5,5],
   prise: [10000.99,5000.99,8000.99,430.66,47535.45,1111.23,5400.78],
 };
